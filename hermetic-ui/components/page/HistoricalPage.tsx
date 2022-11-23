@@ -12,7 +12,6 @@ export default function () {
           <Select
             searchValue={company}
             searchable
-            clearable
             onSearchChange={setCompany}
             nothingFound="No options"
             placeholder="Select company"
@@ -24,7 +23,6 @@ export default function () {
           <Select
             searchValue={pump}
             searchable
-            clearable
             onSearchChange={setPump}
             nothingFound="No options"
             placeholder="Select pump"
@@ -36,11 +34,22 @@ export default function () {
       <Grid>
         <Grid.Col span={12}>
           {company &&
-            pump &&
-            [2, 4, 6, 8, 10].map((i) => (
+            pump === "pump1" &&
+            [10, 2, 4, 6, 8].map((i) => (
               <iframe
                 key={i}
-                src={`http://localhost:3003/d-solo/PqFziYOVk/pump-x271?orgId=1&from=1667815664000&to=1667834869000&theme=light&panelId=${i}`}
+                src={`http://localhost:3003/d-solo/pump1/pump-x271?orgId=1&from=1667815664000&to=1667834869000&theme=light&panelId=${i}`}
+                width="100%"
+                height="40%"
+                frameBorder="0"
+              />
+            ))}
+          {company &&
+            pump === "pump2" &&
+            [10, 2, 4, 6, 8].map((i) => (
+              <iframe
+                key={i}
+                src={`http://localhost:3003/d-solo/pump2/pump-x271?orgId=1&from=1667815664000&to=1667834869000&theme=light&panelId=${i}`}
                 width="100%"
                 height="40%"
                 frameBorder="0"
