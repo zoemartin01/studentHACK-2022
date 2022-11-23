@@ -12,7 +12,10 @@ class SensorData:
     datetime: datetime
 
     def __init__(self, value: float, date: str, time: str):
-        self.value = value
+        try:
+            self.value = float(value)
+        except ValueError:
+            self.value = 0
         self.datetime = datetime.strptime(f"{date} {time}", "%Y/%m/%d %H:%M:%S")
 
     def __repr__(self):
