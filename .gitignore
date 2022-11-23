@@ -183,7 +183,7 @@ cython_debug/
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode
-.gitignore
+#.gitignore
 CNF_Pump_Voice_DE_small.mp4
 2022_11_Hermetic_Firmenpräsentation und Aufgabe_DE-Studenthack.pdf
 CNF_Ueberwachung_Deutsch.mp4
