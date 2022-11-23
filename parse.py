@@ -33,6 +33,25 @@ class Sensor:
     def __repr__(self):
         return f"Sensor: {self.channel_name}, Tag: {self.tag_no}, Comment: {self.tag_comment}, Unit: {self.unit}"
 
+    def as_points(
+        self,
+    ):
+        return [
+            {
+                "measurement": self.channel_name,
+                "tags": {
+                    "comment": self.tag_comment,
+                    "tag_no": self.tag_no,
+                    "unit": self.unit,
+                },
+                "time": sensor_data.datetime.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "fields": {
+                    "value": sensor_data.value,
+                },
+            }
+            for sensor_data in self.data
+        ]
+
 
 def parse_csv_file(file_path: str) -> List[Sensor]:
     sensors: List[Sensor] = []
