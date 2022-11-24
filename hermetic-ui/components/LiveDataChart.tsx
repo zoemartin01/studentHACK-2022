@@ -1,4 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
+import {warn2} from 'src/WarningHelper';
 
 let queue: QElement[] = [
     {
@@ -32,7 +33,7 @@ export default function LiveLineChart() {
     socket.onmessage = function (event) {
         let data2 = JSON.parse(event.data);
         if (data2.x === 'cavitation') {
-            alert("Cavitation");
+            warn2();
             return;
         } else if (data2.x !== 'data') {
             console.log("Received " + data2.x);

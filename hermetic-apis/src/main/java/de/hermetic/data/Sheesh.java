@@ -41,8 +41,8 @@ public class Sheesh {
     private static DataContainer[] noisyData;
 
     static {
-        pumps.add(new Pump("hermetic1", "Hermetic", "pump1", PumpState.FULLY_OPERATIONAL));
-        pumps.add(new Pump("studentec2", "studentec", "pump2", PumpState.FULLY_OPERATIONAL));
+        pumps.add(new Pump("Hermetic", "pump1", PumpState.FULLY_OPERATIONAL));
+        pumps.add(new Pump("studentec", "pump2", PumpState.FULLY_OPERATIONAL));
     }
 
     public static List<Pump> getPumps() {

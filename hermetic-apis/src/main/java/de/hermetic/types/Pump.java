@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Pump {
-    private String id;
     private String company;
     private String name;
     private PumpState state;
