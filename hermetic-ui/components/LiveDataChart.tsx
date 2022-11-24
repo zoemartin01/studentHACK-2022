@@ -31,7 +31,10 @@ export default function LiveLineChart() {
     }
     socket.onmessage = function (event) {
         let data2 = JSON.parse(event.data);
-        if (data2.x !== 'data') {
+        if (data2.x === 'cavitation') {
+            alert("Cavitation");
+            return;
+        } else if (data2.x !== 'data') {
             console.log("Received " + data2.x);
             return;
         }
