@@ -98,7 +98,13 @@ export default function LiveLineChart() {
         };
     }, []);
 
-    return (
+    return (<>
         <canvas style={{width: '700px', height: '500px', border: '2px solid black'}} width={700} height={500} ref={canvasRef}></canvas>
-    );
+        <br/>
+        <span style={{ color: '#1ba300'}}>Temperatur</span>{' '}
+        <span style={{ color: '#004a94'}}>Strom</span>{' '}
+        <span style={{ color: '#a700d5'}}>∆P</span>
+        <br/>
+        <i>Daten qualitativ</i>
+    </>);
 }
