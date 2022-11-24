@@ -38,7 +38,7 @@ export default function () {
             [10, 2, 4, 6, 8].map((i) => (
               <iframe
                 key={i}
-                src={`http://localhost:3003/d-solo/pump1/pump-x271?orgId=1&from=1667815664000&to=1667834869000&theme=light&panelId=${i}`}
+                src={`http://localhost:3003/d-solo/pump1/pump1?orgId=1&from=1667815664000&to=1667834869000&theme=light&panelId=${i}`}
                 width="100%"
                 height="40%"
                 frameBorder="0"
@@ -49,7 +49,7 @@ export default function () {
             [10, 2, 4, 6, 8].map((i) => (
               <iframe
                 key={i}
-                src={`http://localhost:3003/d-solo/pump2/pump-x271?orgId=1&from=1667815664000&to=1667834869000&theme=light&panelId=${i}`}
+                src={`http://localhost:3003/d-solo/pump2/pump2?orgId=1&from=1667815664000&to=1667834869000&theme=light&panelId=${i}`}
                 width="100%"
                 height="40%"
                 frameBorder="0"
