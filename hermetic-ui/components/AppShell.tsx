@@ -32,7 +32,7 @@ import HistoricalPage from "./page/HistoricalPage";
 // @ts-ignore
 const Shell: NextPage = () => {
   const [opened, setOpened] = useState(false);
-  const [page, setPage] = useState(<HistoricalPage />);
+  const [page, setPage] = useState(<DashboardPage />);
   const theme = useMantineTheme();
 
   const setPage1 = (x: SetStateAction<JSX.Element>) => {
