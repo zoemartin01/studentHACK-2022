@@ -7,10 +7,10 @@ export default function() {
     return <>
         <Grid>
             {Api.getPumps().filter(value => value.state < PumpState.Unknown).map((pump) => (
-                <Grid.Col span={4} key={pump.name}>
-                    <Card shadow="sm" p="lg" radius="md" withBorder key={pump.name}>
+                <Grid.Col span={4} key={pump.company + pump.name}>
+                    <Card shadow="sm" p="lg" radius="md" withBorder>
                         <Group position="apart" mt="md" mb="xs">
-                            {pump.name}
+                            {pump.company.concat(" - ", pump.name)}
                             <Badge color={pumpStateToColor(pump.state)}>
                                 {pumpStateToString(pump.state)}
                             </Badge>

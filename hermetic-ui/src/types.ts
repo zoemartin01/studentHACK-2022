@@ -37,6 +37,7 @@ export function pumpStateToColor(state: PumpState): string {
 }
 
 export interface Pump {
+    company: string;
     name: string;
     state: PumpState;
 }

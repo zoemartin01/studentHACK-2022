@@ -7,20 +7,29 @@ interface Api {
 const MockApi: Api = {
     getPumps() {
         return [{
-            name: "Pumpe 1",
+            name: "Pump 1",
+            company: "studentec",
             state: PumpState.FullyOperational
         }, {
-            name: "Pumpe 2",
+            name: "Pump 1",
+            company: "Hermetic",
             state: PumpState.ReducedPower
         }, {
-            name: "Pumpe 3",
+            name: "Pump 2",
+            company: "Hermetic",
             state: PumpState.Warning
         }, {
-            name: "Pumpe 4",
+            name: "Pump 1",
+            company: "KIT Campus Nord",
             state: PumpState.Stopped
         }, {
-            name: "Pumpe 5",
+            name: "Pump 2",
+            company: "KIT Campus Nord",
             state: PumpState.Unknown
+        }, {
+            name: "Pump 3",
+            company: "KIT Campus Nord",
+            state: PumpState.Stopped
         }]
     }
 }
