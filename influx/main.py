@@ -9,7 +9,7 @@ import random
 import json
 
 
-def add_noise(sensors: List[Sensor]):
+def quick_add_noise(sensors: List[Sensor]):
     def cavitation_noise(interval_start: int, interval_end: int, sensor: Sensor):
         interval: SensorData = sensor.data[interval_start:interval_end]
 
@@ -89,9 +89,9 @@ for sensor in sensors:
     client.write_points(sensor.to_influx(), database=pumps[0])
 
 
-add_noise(sensors)
+quick_add_noise(sensors)
 for sensor in sensors:
     client.write_points(sensor.to_influx(), database=pumps[1])
 
-# add_noise(sensors)
+# quick_add_noise(sensors)
 # json.dump([sensor.toJSON() for sensor in sensors], open("../noisy.json", "w"), indent=4)
