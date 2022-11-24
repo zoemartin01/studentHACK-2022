@@ -254,3 +254,6 @@ pip-selfcheck.json
 
 grafana/*
 influxdb/*
+
+clean.json
+noisy.json

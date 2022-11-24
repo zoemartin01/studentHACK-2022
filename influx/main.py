@@ -6,25 +6,9 @@ import numpy as np
 import scipy
 from sklearn.preprocessing import MinMaxScaler
 import random
+import json
 
 
-sensors = parse_csv_file(FILE_PATH)
-pumps = ["pump1", "pump2"]
-
-
-def recreate_database(database: str):
-    client.drop_database(database)
-    client.create_database(database)
-
-
-for pump in pumps:
-    recreate_database(pump)
-
-for sensor in sensors:
-    client.write_points(sensor.to_influx(), database=pumps[0])
-
-
-# introduce random noise into sensor data
 def add_noise(sensors: List[Sensor]):
     def cavitation_noise(interval_start: int, interval_end: int, sensor: Sensor):
         interval: SensorData = sensor.data[interval_start:interval_end]
@@ -85,6 +69,22 @@ def add_noise(sensors: List[Sensor]):
                 next(x for x in sensors if x.channel_name == "CHC009"),
             ),
         )
+
+
+sensors = parse_csv_file(FILE_PATH)
+pumps = ["pump1", "pump2"]
+
+
+def recreate_database(database: str):
+    client.drop_database(database)
+    client.create_database(database)
+
+
+for pump in pumps:
+    recreate_database(pump)
+
+for sensor in sensors:
+    client.write_points(sensor.to_influx(), database=pumps[0])
 
 
 add_noise(sensors)

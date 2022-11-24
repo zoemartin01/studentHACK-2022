@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import List
+import json
 
 
 class SensorData:
@@ -15,6 +16,9 @@ class SensorData:
 
     def __repr__(self):
         return f"SensorData(value={self.value}, datetime={self.datetime})"
+
+    def toJSON(self):
+        return {"value": self.value, "datetime": self.datetime.isoformat()}
 
 
 class Sensor:
@@ -52,3 +56,12 @@ class Sensor:
             }
             for sensor_data in self.data
         ]
+
+    def toJSON(self):
+        return {
+            "channel_name": self.channel_name,
+            "tag_comment": self.tag_comment,
+            "tag_no": self.tag_no,
+            "unit": self.unit,
+            "data": [data.toJSON() for data in self.data],
+        }
