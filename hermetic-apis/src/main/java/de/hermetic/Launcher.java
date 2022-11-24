@@ -29,13 +29,6 @@ public class Launcher {
         SPumpMetrics.start();
         DPumpInventory.start();
         DDataStream.start();
-
-        try {
-            Thread.sleep(6000);
-            Sheesh.startStreaming();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
     
 }

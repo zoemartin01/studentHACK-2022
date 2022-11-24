@@ -1,5 +1,9 @@
+import {Title} from "@mantine/core";
+import LiveLineChart from "../LiveDataChart";
+
 export default function() {
     return <>
-        Live Data
+        <Title>Live Data</Title>
+        <LiveLineChart />
     </>;
 }

@@ -9,7 +9,7 @@ import lombok.SneakyThrows;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
@@ -25,7 +25,7 @@ public class Sheesh {
 
     private static final List<Pump> pumps = new ArrayList<>();
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    public static final ObjectMapper MAPPER = new ObjectMapper();
 
     @Getter
     private static boolean isStreaming = false;
@@ -64,14 +64,13 @@ public class Sheesh {
     }
 
     @SneakyThrows
-    public static String getDataPointJSON(DataContainer[] container, int counter, int... positions) {
+    public static DataContainer.DataPoint[] getDataPoint(DataContainer[] container, int counter, int... positions) {
         DataContainer.DataPoint[] points = new DataContainer.DataPoint[positions.length];
         for (int i = 0; i < positions.length; i++) {
             points[i] = container[positions[i]].getData()[counter];
         }
 
-        String string = MAPPER.writeValueAsString(points);
-        return string;
+        return points;
     }
 
     private static DataContainer[] loadFile(String path) throws IOException {
@@ -94,10 +93,11 @@ public class Sheesh {
 
     public static synchronized void stopStreaming() {
         isStreaming = false;
-        futures.forEach(future -> {
+        System.exit(0);
+        for (var future : futures) {
             future.cancel(true);
             futures.remove(future);
-        });
+        }
     }
 
 }
