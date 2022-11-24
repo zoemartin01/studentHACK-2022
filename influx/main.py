@@ -58,6 +58,8 @@ def add_noise(sensors: List[Sensor]):
         interval_start = np.random.randint(0, len(sensors[0].data) - 100)
         interval_end = interval_start + np.random.randint(50, 100)
         for sensor in sensors:
+            if sensor.unit == "\u00b0C":
+                continue
             cavitation_noise(interval_start, interval_end, sensor)
 
     for _ in range(np.random.randint(8, 12)):
@@ -90,3 +92,6 @@ for sensor in sensors:
 add_noise(sensors)
 for sensor in sensors:
     client.write_points(sensor.to_influx(), database=pumps[1])
+
+# add_noise(sensors)
+# json.dump([sensor.toJSON() for sensor in sensors], open("../noisy.json", "w"), indent=4)
