@@ -11,9 +11,9 @@ const LocalPage = function () {
         .map((pump) => showNotification({
           title: pumpStateToString(pump.state),
           color: pumpStateToColor(pump.state),
-          message: 'State of '.concat(pump.name, ' is: ' , pumpStateToString(pump.state)),
+          message: 'State of '.concat(pump.name, ' of ', pump.company, ' is: ' , pumpStateToString(pump.state)),
           autoClose: 30000,
-          key: pump.name
+          key: pump.company.concat(pump.name)
         })
     )
   }, [])
