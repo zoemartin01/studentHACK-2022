@@ -10,8 +10,7 @@ import {
   Text,
   ThemeIcon,
   UnstyledButton,
-  Badge,
-  useMantineTheme,
+  useMantineTheme, Indicator,
 } from "@mantine/core";
 import { NextPage } from "next";
 
@@ -28,6 +27,18 @@ import MaintenancePage from "./page/MaintenancePage";
 import ProblemPage from "./page/ProblemPage";
 import LivePage from "./page/LivePage";
 import HistoricalPage from "./page/HistoricalPage";
+
+export let warned = false;
+export let intLabel = 0;
+
+export function setIntLabel(value: number) {
+  intLabel = value;
+}
+
+export function setWarned() {
+  if (warned) return;
+  warned = true;
+}
 
 // @ts-ignore
 const Shell: NextPage = () => {
@@ -68,12 +79,14 @@ const Shell: NextPage = () => {
           width={{ sm: 300, lg: 400 }}
         >
           <Navbar.Section grow>
-            <MainLink
-              icon={<InfoIcon />}
-              color={"pink"}
-              label={"Dashboard"}
-              onClick={() => setPage1(<DashboardPage />)}
-            />
+              <MainLink
+                icon={<InfoIcon />}
+                color={"pink"}
+                label={"Dashboard"}
+                onClick={() => {setPage1(<DashboardPage />)
+                  warned = false;
+                  intLabel = 0;}}
+              />
             <MainLink
               icon={<CloudIcon />}
               color={"blue"}
